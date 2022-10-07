@@ -3,8 +3,8 @@ function [thin_image] = thin_zhangSuen(binary_image)
 %   Step One：循环所有前景像素点，对符合如下条件的像素点标记为删除：
 %   1.  2 <= N(p1) <=6
 %   2.  S(P1) = 1
-%   3.  P2 * P4 * P6 = 0
-%   4.  P4 * P6 * P8 = 0
+%   3.  P2  P4  P6 至少有1个为1
+%   4.  P4  P6  P8 至少有1个为1
 %           P9  P2  P3  
 %           P8  P1  P4
 %           P7  P6  P5
@@ -14,8 +14,8 @@ function [thin_image] = thin_zhangSuen(binary_image)
 %   Step Two：循环所有前景像素点，对符合如下条件的像素点标记为删除：
 %   1.  2 <= N(p1) <=6
 %   2.  S(P1) = 1
-%   3.  P2 * P4 * P8 = 0
-%   4.  P2 * P6 * P8 = 0
+%   3.  P2  P4  P8 至少有1个为1
+%   4.  P2  P6  P8 至少有1个为1
 
 %   inverse, 算法把0作为前景，1作为后景
 thin_image = binary_image;

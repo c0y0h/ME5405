@@ -57,7 +57,7 @@ binary_image = binary_image > 0;
 thin_image = thin_hilditch(binary_image);
 figure(10);
 imshow(thin_image, [], 'InitialMagnification','fit');
-%%
+
 % Zhang Suen
 thin_image = thin_zhangSuen(binary_image);
 figure(11);
