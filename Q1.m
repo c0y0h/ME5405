@@ -63,6 +63,10 @@ thin_image = thin_zhangSuen(binary_image);
 figure(11);
 imshow(thin_image, [], 'InitialMagnification','fit');
 
+% Rosenfeld
+thin_image = thin_rosenfeld(binary_image);
+figure(12);
+imshow(thin_image, [], 'InitialMagnification','fit');
 
 %%
 
