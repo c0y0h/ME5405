@@ -22,6 +22,11 @@ binary_image = gray2binary_iterative(original_image);
 figure(4);
 imshow(binary_image, [], 'InitialMagnification','fit');
 
+% OTSU
+[best_threshold, binary_image] = gray2binary_otsu(original_image);
+figure(5);
+imshow(binary_image, [], 'InitialMagnification','fit');
+
 % Kittler
 % bad performance
 binary_image = gray2binary_kittler(original_image);
@@ -38,9 +43,9 @@ binary_image = gray2binary_niblack(original_image, 7, 0.01);
 figure(8);
 imshow(binary_image, [], 'InitialMagnification','fit'); 
 
-% OTSU
+% 最终选用 OTSU
 [best_threshold, binary_image] = gray2binary_otsu(original_image);
-figure(5);
+figure(9);
 imshow(binary_image, [], 'InitialMagnification','fit');
 
 %% Determine an one-pixel thin image of the objects
@@ -50,8 +55,14 @@ binary_image = binary_image > 0;
 
 % Helditch
 thin_image = thin_hilditch(binary_image);
-figure(9);
+figure(10);
 imshow(thin_image, [], 'InitialMagnification','fit');
+%%
+% Zhang Suen
+thin_image = thin_zhangSuen(binary_image);
+figure(11);
+imshow(thin_image, [], 'InitialMagnification','fit');
+
 
 %%
 
