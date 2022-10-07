@@ -68,7 +68,19 @@ thin_image = thin_rosenfeld(binary_image);
 figure(12);
 imshow(thin_image, [], 'InitialMagnification','fit');
 
-%%
+% Look for table
+thin_image = thin_lookForTable(binary_image);
+figure(13);
+imshow(thin_image, [], 'InitialMagnification','fit');
+
+% 最后选用 Rosenfeld
+thin_image = thin_rosenfeld(binary_image);
+figure(14);
+imshow(thin_image, [], 'InitialMagnification','fit');
+
+%% Determine the outline(s)
+
+
 
 
 
