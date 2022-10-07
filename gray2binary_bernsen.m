@@ -4,14 +4,18 @@ function [binary_image] = gray2binary_bernsen(original_image, kernel_size, Tloca
 %   计算以P为中心的大小为 kernel*kernel 窗口内的所有像素的最大值 kernelMax 与最小值kernelMin，
 %   若两者差值相近，该部分属于目标或背景，将该灰度与全局阈值比较，确定是目标还是背景，
 %   若二者差值较大则可能属于目标与背景相交的边缘，此时将二者平均值作为 Kernel 阈值。
-binary_image = zeros(64, 64, "uint8");
+%   https://blog.csdn.net/Skymelu/article/details/95631992
+
+height = size(original_image, 1);
+width = size(original_image, 2);
+binary_image = zeros(height, width, "uint8");
 halfKernel = floor(kernel_size / 2);
 
 kernelData = zeros(kernel_size * kernel_size, 1);
 
-for i  = 1 : 64
-    for j = 1 : 64
-        if(i <= halfKernel || i > 64 - halfKernel ||  j <= halfKernel || j > 64 - halfKernel)
+for i  = 1 : height
+    for j = 1 : width
+        if(i <= halfKernel || i > height - halfKernel ||  j <= halfKernel || j > width - halfKernel)
             binary_image(i, j) = 0;
         else
             k = 1;

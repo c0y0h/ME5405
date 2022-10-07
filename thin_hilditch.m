@@ -22,8 +22,12 @@ function [thin_image] = thin_hilditch(binary_image)
 %   8联通计算公式:
 %   Nc(p) = sum(x_2i-1 - x_2i-1 * x_2i * x_2i+1), i from 1 to 4;
 
+%   https://www.twblogs.net/a/5c762cadbd9eee31cea519c2/?lang=zh-cn
+
+height = size(binary_image, 1);
+width = size(binary_image, 2);
 %   preprocessing, zero_padding
-pad_image = zeros(64 + 4, 64 + 4);
+pad_image = zeros(height + 4, height + 4);
 pad_image(3 : end - 2, 3 : end - 2) = binary_image;
 
 flag = 1;

@@ -2,7 +2,11 @@ function [binary_image] = gray2binary_niblack(original_image, kernel_size, k)
 %GRAY2BINARY_NIBLACK 此处显示有关此函数的摘要
 %   T_niblack = m + k * s
 %             = m + k * sqrt( 1 / (N*P) * sum((pi - m) ^ 2) )
-binary_image = zeros(64, 64, "uint8");
+%   https://blog.csdn.net/LOVExinxinsensen/article/details/79631924
+
+height = size(original_image, 1);
+width = size(original_image, 2);
+binary_image = zeros(height, width, "uint8");
 
 window = ones(kernel_size, kernel_size);
 

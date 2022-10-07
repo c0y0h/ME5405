@@ -1,7 +1,9 @@
 function [binary_image] = gray2binary_iterative(original_image)
 %GRAY2BINARY_GLOBALMEANTHRESHOLD 此处显示有关此函数的摘要
-%   此处显示详细说明
-binary_image = zeros(64, 64, "uint8");
+%   http://www.360doc.com/content/20/1209/07/37142366_950304509.shtml
+height = size(original_image, 1);
+width = size(original_image, 2);
+binary_image = zeros(height, width, "uint8");
 
 threshold = (0 + 31) / 2;
 new_threshold = 0;
@@ -12,8 +14,8 @@ while(abs(threshold - new_threshold) < 1e-5)
     sum_high = 0;
     count_high = 0;
 
-    for i = 1 : 64
-        for j = 1 : 64
+    for i = 1 : height
+        for j = 1 : width
             if(original_image(i, j) <= threshold)
                 sum_low = sum_low + original_image(i, j);
                 count_low = count_low + 1;
@@ -30,8 +32,8 @@ while(abs(threshold - new_threshold) < 1e-5)
 
 end
 
-for i = 1 : 64
-    for j = 1 : 64
+for i = 1 : height
+    for j = 1 : width
         if(original_image(i, j) <= threshold)
             binary_image(i, j) = 31;
         else

@@ -8,6 +8,11 @@ function [thin_image] = thin_rosenfeld(binary_image)
 
 %   note: 8 simple 即把中间的像素从1变为0后，不改变周围八个邻居的八联通性
 
+%   https://www.freesion.com/article/71451169858/
+
+height = size(binary_image, 1);
+width = size(binary_image, 2);
+
 thin_image = binary_image;
 while true
     s1 = [];
@@ -15,8 +20,8 @@ while true
     s3 = [];
     s4 = [];
     for n = 1 : 4
-        for i = 2 : 63
-            for j = 2 : 63
+        for i = 2 : height - 1
+            for j = 2 : width - 1
     
                 if thin_image(i, j) == 0
                     continue;

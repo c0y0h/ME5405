@@ -85,3 +85,4 @@ imshow(thin_image, [], 'InitialMagnification','fit');
 
 
 
+

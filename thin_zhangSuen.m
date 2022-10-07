@@ -17,6 +17,11 @@ function [thin_image] = thin_zhangSuen(binary_image)
 %   3.  P2  P4  P8 至少有1个为1
 %   4.  P2  P6  P8 至少有1个为1
 
+%   https://blog.csdn.net/Ibelievesunshine/article/details/105069015
+
+height = size(binary_image, 1);
+width = size(binary_image, 2);
+
 %   inverse, 算法把0作为前景，1作为后景
 thin_image = binary_image;
 thin_image = 1 - thin_image;
@@ -26,8 +31,8 @@ while true
     s2 = [];
     
     % Step 1
-    for i = 2 : 63
-        for j = 2 : 63  
+    for i = 2 : height - 1
+        for j = 2 : width - 1
             
             %   不是前景点不理会
             if thin_image(i, j) > 0
@@ -96,8 +101,8 @@ while true
     
 
     % Step 2
-    for i = 2 : 63
-        for j = 2 : 63  
+    for i = 2 : height - 1
+        for j = 2 : width - 1  
             
             %   不是前景点不理会
             if thin_image(i, j) > 0
