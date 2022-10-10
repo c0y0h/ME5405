@@ -27,7 +27,7 @@ function [thin_image] = thin_hilditch(binary_image)
 height = size(binary_image, 1);
 width = size(binary_image, 2);
 %   preprocessing, zero_padding
-pad_image = zeros(height + 4, height + 4);
+pad_image = zeros(height + 4, width + 4);
 pad_image(3 : end - 2, 3 : end - 2) = binary_image;
 
 flag = 1;

@@ -5,7 +5,7 @@ binary_image = zeros(64, 64, "uint8");
 sum = 0;
 for i = 1 : 64
     for j = 1 : 64
-        sum = sum + original_image(i, j);
+        sum = sum + double(original_image(i, j));
     end
 end
 global_mean_threshold = sum / (size(original_image, 1) * size(original_image, 1));

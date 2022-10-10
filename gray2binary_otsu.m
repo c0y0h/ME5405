@@ -5,7 +5,7 @@ function [best_threshold, binary_image] = gray2binary_otsu(original_image)
 %   https://blog.csdn.net/qq_43743037/article/details/105376884
 height = size(original_image, 1);
 width = size(original_image, 2);
-binary_image = zeros(height, width, "uint8");
+binary_image = zeros(height, width);
 best_threshold = 0;
 g_max = 0;
 
