@@ -97,32 +97,42 @@ outline_image = detector_prewitt(binary_image, prewitt_threshold);
 figure(17);
 imshow(outline_image, [], 'InitialMagnification','fit');
 
+%   Laplace detector
+laplace_threshold = 2.8;
+outline_image = detector_laplace(binary_image, laplace_threshold);
+figure(18);
+imshow(outline_image, [], 'InitialMagnification','fit');
+
 %%
 img_afterFilter = gaussianFilter(original_image, 5, 0.5);
-figure(21);
+figure(19);
 imshow(img_afterFilter, [], 'InitialMagnification','fit');
 
 [best_value, binary_image] = gray2binary_otsu(img_afterFilter);
 binary_image = binary_image > 0;
-figure(22);
+figure(20);
 imshow(binary_image, [], 'InitialMagnification','fit');
 
-%%
-binary_image = binary_image > 0;
 %   Canny detector
 %   binary_image, GK_size, GK_sigma, Kxy_size, lowTh, ratio
 [outline_image1, outline_image2, outline_image3] = detector_canny(binary_image, 3, 1, 3, 0.8, 2);
 % subplot(3, 1, 1);
-figure(18);
+figure(21);
 imshow(outline_image1, [], 'InitialMagnification','fit');
 % subplot(3, 1, 2);
-figure(19);
+figure(22);
 imshow(outline_image2, [], 'InitialMagnification','fit');
 % subplot(3, 1, 3);
-figure(20);
+figure(23);
 imshow(outline_image3, [], 'InitialMagnification','fit');
-%%
+
+% matlab自带的 canny 边缘检测函数，效果比自己写的好太多了
 ed = edge(binary_image, 'canny', 0.5);
+figure(24);
+imshow(ed, [], 'InitialMagnification','fit');
+
+
+%%
 
 
 
