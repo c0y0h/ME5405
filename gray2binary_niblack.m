@@ -6,7 +6,8 @@ function [binary_image] = gray2binary_niblack(original_image, kernel_size, k)
 
 height = size(original_image, 1);
 width = size(original_image, 2);
-binary_image = zeros(height, width, "uint8");
+
+% binary_image = zeros(height, width);
 
 window = ones(kernel_size, kernel_size);
 

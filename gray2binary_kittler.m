@@ -4,7 +4,7 @@ function [binary_image] = gray2binary_kittler(original_image)
 %   https://blog.csdn.net/qq_43743037/article/details/105376884
 height = size(original_image, 1);
 width = size(original_image, 2);
-binary_image = zeros(height, width, "uint8");
+binary_image = zeros(height, width);
 tmp = 0;
 grad = 0;
 
@@ -30,7 +30,7 @@ threshold = imageAvG / (height * width);
 for i = 1 : height
     for j = 1 : width
         if(original_image(i, j) <= threshold)
-            binary_image(i, j) = 31;
+            binary_image(i, j) = 1;
         else
             binary_image(i, j) = 0;
         end

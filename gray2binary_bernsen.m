@@ -8,7 +8,7 @@ function [binary_image] = gray2binary_bernsen(original_image, kernel_size, Tloca
 
 height = size(original_image, 1);
 width = size(original_image, 2);
-binary_image = zeros(height, width, "uint8");
+binary_image = zeros(height, width);
 halfKernel = floor(kernel_size / 2);
 
 kernelData = zeros(kernel_size * kernel_size, 1);
@@ -34,7 +34,7 @@ for i  = 1 : height
                 if(Tkernel > Tglobal)
                     binary_image(i, j) = 0;
                 else
-                    binary_image(i, j) = 255;
+                    binary_image(i, j) = 1;
                 end
 
             % 灰度差值大，说明在边缘区域，将均值作为局部阈值
@@ -42,7 +42,7 @@ for i  = 1 : height
                 if(original_image(i, j) > Tkernel)
                     binary_image(i, j) = 0;
                 else
-                    binary_image(i, j) = 255;
+                    binary_image(i, j) = 1;
                 end
             end
         end

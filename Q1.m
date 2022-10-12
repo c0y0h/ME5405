@@ -5,12 +5,35 @@ original_image = decode(data);
 figure(1);
 imshow(original_image, [], 'InitialMagnification','fit');
 
+%%  Filter
+% imhist(original_image, 32);
+histgram = histgram_transform(original_image, 32);
+figure(2);
+bar(histgram);
+
+%   median filter
+img_afterFilter = medianFilter(original_image, 3);
+figure(3);
+imshow(img_afterFilter, [], 'InitialMagnification','fit');
+
+histgram = histgram_transform(img_afterFilter, 32);
+figure(4);
+bar(histgram);
+%%
+%   compute the Fourier spectrum using fft2
+[m, n] = size(original_image);
+F = fft2(double(original_image), m, n);
+F_shift = fftshift(F);
+figure(2);
+imshow(log(F_shift + 1), []);
+
 %% Threshold the image and convert it into binary image.
 
 % naive mannualy setting
-binary_image = gray2binary_naive(original_image);
+binary_image = gray2binary_naive(original_image, 20);
 figure(2);
 imshow(binary_image, [], 'InitialMagnification','fit');
+
 % %%
 % % global mean threshold
 % binary_image = gray2binary_globalMeanThreshold(original_image);
@@ -23,7 +46,7 @@ figure(4);
 imshow(binary_image, [], 'InitialMagnification','fit');
 
 % OTSU
-[best_threshold, binary_image] = gray2binary_otsu(original_image);
+[best_threshold, binary_image] = gray2binary_otsu(original_image, 32);
 figure(5);
 imshow(binary_image, [], 'InitialMagnification','fit');
 
@@ -44,14 +67,11 @@ figure(8);
 imshow(binary_image, [], 'InitialMagnification','fit'); 
 
 % 最终选用 OTSU
-[best_threshold, binary_image] = gray2binary_otsu(original_image);
+[best_threshold, binary_image] = gray2binary_otsu(original_image, 32);
 figure(9);
 imshow(binary_image, [], 'InitialMagnification','fit');
 
 %% Determine an one-pixel thin image of the objects
-
-%   255 -> 1; 0 -> 0
-binary_image = binary_image > 0;
 
 % Helditch
 thin_image = thin_hilditch(binary_image);
@@ -98,7 +118,9 @@ figure(17);
 imshow(outline_image, [], 'InitialMagnification','fit');
 
 %   Laplace detector
+%   乘一个系数效果才好
 laplace_threshold = 2.8;
+binary_image = binary_image * 31;
 outline_image = detector_laplace(binary_image, laplace_threshold);
 figure(18);
 imshow(outline_image, [], 'InitialMagnification','fit');
@@ -108,8 +130,7 @@ img_afterFilter = gaussianFilter(original_image, 5, 0.5);
 figure(19);
 imshow(img_afterFilter, [], 'InitialMagnification','fit');
 
-[best_value, binary_image] = gray2binary_otsu(img_afterFilter);
-binary_image = binary_image > 0;
+[best_value, binary_image] = gray2binary_otsu(img_afterFilter, 32);
 figure(20);
 imshow(binary_image, [], 'InitialMagnification','fit');
 

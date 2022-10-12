@@ -8,6 +8,8 @@ function [outline_image] = detector_sobel(binary_image, sobel_threshold)
 height = size(binary_image, 1);
 width = size(binary_image, 2);
 
+% binary_image = double(binary_image);
+
 outline_image = zeros(height, width);
 
 Gx = [-1, 0, 1;

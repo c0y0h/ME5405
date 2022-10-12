@@ -3,7 +3,7 @@ function [binary_image] = gray2binary_iterative(original_image)
 %   http://www.360doc.com/content/20/1209/07/37142366_950304509.shtml
 height = size(original_image, 1);
 width = size(original_image, 2);
-binary_image = zeros(height, width, "uint8");
+binary_image = zeros(height, width);
 
 threshold = (0 + 31) / 2;
 new_threshold = 0;

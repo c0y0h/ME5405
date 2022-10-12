@@ -1,4 +1,4 @@
-function [best_threshold, binary_image] = gray2binary_otsu(original_image)
+function [best_threshold, binary_image] = gray2binary_otsu(original_image, gray_level)
 %GRAY2BINARY_OTSU 此处显示有关此函数的摘要
 %   n0, n1, m0, m1, p0, p1
 %   g = p0 * p1 * (m0 - m1) ^ 2
@@ -9,7 +9,7 @@ binary_image = zeros(height, width);
 best_threshold = 0;
 g_max = 0;
 
-for k = 0 : 31
+for k = 0 : gray_level - 1
     n0 = 0;
     n1 = 0;
     sum0 = 0;
@@ -45,7 +45,7 @@ end
 for i = 1 : height
     for j = 1 : width
         if(original_image(i, j) <= best_threshold)
-            binary_image(i, j) = 31;
+            binary_image(i, j) = 1;
         else
             binary_image(i, j) = 0;
         end
