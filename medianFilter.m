@@ -2,8 +2,8 @@ function [img_afterFilter] = medianFilter(original_image, kernel_size)
 %MEDIANFILTER 此处显示有关此函数的摘要
 %   此处显示详细说明
 [height, width] = size(original_image);
-% img_afterFilter = original_image;
-img_afterFilter = ones(height, width) * 31;
+img_afterFilter = original_image;
+% img_afterFilter = ones(height, width) * 31;
 
 shift = floor(kernel_size / 2);
 

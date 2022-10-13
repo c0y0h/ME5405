@@ -153,8 +153,15 @@ figure(24);
 imshow(ed, [], 'InitialMagnification','fit');
 
 
-%%
+%%  Label the different objects.
+%   classical connected components algorithm
+label_matrix = label_classical(binary_image);
+figure(25);
+imshow(label_matrix, [], 'InitialMagnification','fit');
 
+label_img = label2rgb(label_matrix, 'jet', 'w', 'shuffle');
+figure(26);
+imshow(label_img, [], 'InitialMagnification','fit');
 
 
 
