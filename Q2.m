@@ -38,11 +38,11 @@ imshow(binary_image, [], 'InitialMagnification','fit');
 
 %%  Determine a one-pixel thin image of the characters.
 
-thin_image = thin_rosenfeld(binary_image);
+thin_image = thin_zhangSuen(binary_image);
 figure(5);
 imshow(thin_image, [], 'InitialMagnification','fit');
 
-thin_image = thin_zhangSuen(binary_image);
+thin_image = thin_rosenfeld(binary_image);
 figure(6);
 imshow(thin_image, [], 'InitialMagnification','fit');
 
@@ -76,6 +76,40 @@ imshow(outline_image, [], 'InitialMagnification','fit');
 % imshow(outline_image, [], 'InitialMagnification','fit');
 
 %%  Segment the image to separate and label the different characters.
+
+%   classical connected components algorithm
+label_matrix = label_classical(binary_image);
+figure(11);
+imshow(label_matrix, [], 'InitialMagnification','fit');
+
+label_img = label2rgb(label_matrix, 'jet', 'w', 'shuffle');
+figure(12);
+imshow(label_img, [], 'InitialMagnification','fit');
+
+%   region seeds growing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

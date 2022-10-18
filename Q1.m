@@ -154,14 +154,32 @@ imshow(ed, [], 'InitialMagnification','fit');
 
 
 %%  Label the different objects.
+
+%   region seeds growing
+%   seen as pre-processing
+%   mannually choose seeds, can be designed as integraction
+binary_image = rsg_process(binary_image);
+figure(25);
+imshow(binary_image, [], 'InitialMagnification','fit');
+
 %   classical connected components algorithm
 label_matrix = label_classical(binary_image);
-figure(25);
-imshow(label_matrix, [], 'InitialMagnification','fit');
+% figure(25);
+% imshow(label_matrix, [], 'InitialMagnification','fit');
 
 label_img = label2rgb(label_matrix, 'jet', 'w', 'shuffle');
 figure(26);
 imshow(label_img, [], 'InitialMagnification','fit');
+
+%   rsg label
+label_matrix = label_rsg(binary_image);
+label_img = label2rgb(label_matrix, 'jet', 'w', 'shuffle');
+figure(27);
+imshow(label_img, [], 'InitialMagnification','fit');
+
+
+
+
 
 
 
