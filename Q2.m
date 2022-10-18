@@ -5,7 +5,7 @@ figure(1);
 imshow(original_image, [], 'InitialMagnification','fit');
 
 %%  Create an image which is a sub-image of the original image comprising the middleline – HELLO, WORLD.
-words_image = original_image(1/3*size(original_image, 1) : 2/3*size(original_image, 1), 1 : 1/2*size(original_image, 2));
+words_image = original_image(1/3*size(original_image, 1) : 2/3*size(original_image, 1), 5 : 1/2*size(original_image, 2));
 figure(2);
 imshow(words_image, [], 'InitialMagnification','fit');
 
@@ -79,15 +79,23 @@ imshow(outline_image, [], 'InitialMagnification','fit');
 
 %   classical connected components algorithm
 label_matrix = label_classical(binary_image);
-figure(11);
-imshow(label_matrix, [], 'InitialMagnification','fit');
-
 label_img = label2rgb(label_matrix, 'jet', 'w', 'shuffle');
-figure(12);
+figure(11);
 imshow(label_img, [], 'InitialMagnification','fit');
 
 %   region seeds growing
-
+label_matrix = label_rsg(binary_image);
+label_img = label2rgb(label_matrix, 'jet', 'w', 'shuffle');
+figure(12);
+imshow(label_img, [], 'InitialMagnification','fit');
+%%
+%   seperate
+[img_num, s] = img_seperate(label_matrix);
+for i = 1 : img_num
+    figure(12+i);
+    imshow(s(i).Image, [], 'InitialMagnification','fit');
+end
+%%
 
 
 

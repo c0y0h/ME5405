@@ -177,6 +177,16 @@ label_img = label2rgb(label_matrix, 'jet', 'w', 'shuffle');
 figure(27);
 imshow(label_img, [], 'InitialMagnification','fit');
 
+% %   seperate
+% [img_num, s] = img_seperate(label_matrix);
+% for i = 1 : img_num
+%     figure(27+i);
+%     imshow(s(i).Image, [], 'InitialMagnification','fit');
+% end
+
+%%  Rotate the original image by 30 degrees, 60 degrees and 90 degrees respectively.
+
+
 
 
 
