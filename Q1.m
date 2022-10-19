@@ -186,8 +186,25 @@ imshow(label_img, [], 'InitialMagnification','fit');
 
 %%  Rotate the original image by 30 degrees, 60 degrees and 90 degrees respectively.
 
+%   forward mapping method
+rotatedImg_30 = rotate_forwardMapping(original_image, 30);
+rotatedImg_60 = rotate_forwardMapping(original_image, 60);
+rotatedImg_90 = rotate_forwardMapping(original_image, 90);
 
+figure(27)
+imshow(original_image, [], 'InitialMagnification','fit');
 
+figure(28)
+subplot(3, 1, 1);
+imshow(rotatedImg_30, [], 'InitialMagnification','fit');
+subplot(3, 1, 2);
+imshow(rotatedImg_60, [], 'InitialMagnification','fit');
+subplot(3, 1, 3);
+imshow(rotatedImg_90, [], 'InitialMagnification','fit');
+
+%   
+
+%%
 
 
 
