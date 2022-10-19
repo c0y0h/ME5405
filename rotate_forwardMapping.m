@@ -1,5 +1,5 @@
 function [rotatedImg] = rotate_forwardMapping(original_image, theta)
-%IMG_ROTATE 此处显示有关此函数的摘要
+%IMG_ROTATE https://blog.csdn.net/lkj345/article/details/50555870
 %   此处显示详细说明
 original_image = double(original_image);
 height = size(original_image, 1);

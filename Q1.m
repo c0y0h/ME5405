@@ -202,7 +202,27 @@ imshow(rotatedImg_60, [], 'InitialMagnification','fit');
 subplot(3, 1, 3);
 imshow(rotatedImg_90, [], 'InitialMagnification','fit');
 
-%   
+%   backward mapping interpolation
+[rotatedImg_30_nni, rotatedImg_30_bi] = rotate_backwardMapping(original_image, 30);
+[rotatedImg_60_nni, rotatedImg_60_bi] = rotate_backwardMapping(original_image, 60);
+[rotatedImg_90_nni, rotatedImg_90_bi] = rotate_backwardMapping(original_image, 90);
+
+figure(27)
+imshow(original_image, [], 'InitialMagnification','fit');
+
+figure(29)
+subplot(3, 2, 1);
+imshow(rotatedImg_30_nni, [], 'InitialMagnification','fit');
+subplot(3, 2, 3);
+imshow(rotatedImg_60_nni, [], 'InitialMagnification','fit');
+subplot(3, 2, 5);
+imshow(rotatedImg_90_nni, [], 'InitialMagnification','fit');
+subplot(3, 2, 2);
+imshow(rotatedImg_30_bi, [], 'InitialMagnification','fit');
+subplot(3, 2, 4);
+imshow(rotatedImg_60_bi, [], 'InitialMagnification','fit');
+subplot(3, 2, 6);
+imshow(rotatedImg_90_bi, [], 'InitialMagnification','fit');
 
 %%
 
