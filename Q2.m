@@ -95,7 +95,17 @@ for i = 1 : img_num
     figure(12+i);
     imshow(s(i).Image, [], 'InitialMagnification','fit');
 end
-%%
+
+%% Train the (conventional) unsupervised classification method of your choice 
+% (i.e., self-ordered maps (SOM), k-nearest neighbors (kNN), or support vector machine (SVM)) to
+% recognize the different characters ("H", "E”, “L”, “O”, “W”, “R”, “D”). You should
+% use 75% of the dataset to train your classifier, and the remaining 25% for validation
+% (testing). Then, test your trained classifier on each characters in image 1, reporting
+% the final classification results. 
+
+train_knn(5);
+
+
 
 
 
