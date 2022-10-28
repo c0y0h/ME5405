@@ -26,10 +26,10 @@ for i=1:count
 
     r_ = r-min(r)+1;
     c_ = c-min(c)+1;
-    s(i).Image = zeros(max(r_),max(c_));
+    s(i).Image = zeros(max(r_)+20,max(c_)+20);
     s(i).BoundingBox=[min(r)-0.5,min(c)-0.5,max(r)+0.5,max(c)+0.5];
     for q=1:size(r_)
-        s(i).Image(r_(q),c_(q))=1;
+        s(i).Image(r_(q)+10,c_(q)+10)=1;
     end  
     s(i).Centroid=[mean(r),mean(c)];
      

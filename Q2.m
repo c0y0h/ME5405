@@ -91,7 +91,9 @@ imshow(label_img, [], 'InitialMagnification','fit');
 %%
 %   seperate
 [img_num, s] = img_seperate(label_matrix);
-for i = 1 : img_num
+s=s(2:11);
+for i = 1 : length(s)
+    s(i).Image=1-imbinarize(imresize(s(i).Image,[128,128]));
     figure(12+i);
     imshow(s(i).Image, [], 'InitialMagnification','fit');
 end
@@ -103,7 +105,12 @@ end
 % (testing). Then, test your trained classifier on each characters in image 1, reporting
 % the final classification results. 
 
-train_knn(5);
+% train_knn(5);
+result=[];
+for i=1:length(s)
+    result=[result,train_knn(5,s(i).Image,2)];
+end
+
 
 
 
