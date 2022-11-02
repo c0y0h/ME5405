@@ -1,5 +1,5 @@
 %% Display the original image on screen.
-
+clc,clear;
 data = importdata("chromo.txt");
 original_image = decode(data);
 figure(1);
@@ -19,6 +19,11 @@ imshow(img_afterFilter, [], 'InitialMagnification','fit');
 histgram = histgram_transform(img_afterFilter, 32);
 figure(4);
 bar(histgram);
+
+img_afterFilter = gaussianFilter(original_image, 5, 0.5);
+figure(4);
+imshow(img_afterFilter, [], 'InitialMagnification','fit');
+
 %%
 %   compute the Fourier spectrum using fft2
 [m, n] = size(original_image);
@@ -66,8 +71,16 @@ binary_image = gray2binary_niblack(original_image, 7, 0.01);
 figure(8);
 imshow(binary_image, [], 'InitialMagnification','fit'); 
 
-% 最终选用 OTSU
+%% 最终选用 OTSU
 [best_threshold, binary_image] = gray2binary_otsu(original_image, 32);
+% [best_threshold, binary_image] = gray2binary_otsu(img_afterFilter, 32);
+figure(9);
+imshow(binary_image, [], 'InitialMagnification','fit');
+
+tmp=binary_image(42:end,10:47);
+tmp=bwmorph(tmp,'bridge');
+tmp=bwmorph(tmp,'fill');
+binary_image(42:end,10:47)=tmp;
 figure(9);
 imshow(binary_image, [], 'InitialMagnification','fit');
 
@@ -93,7 +106,7 @@ thin_image = thin_lookForTable(binary_image);
 figure(13);
 imshow(thin_image, [], 'InitialMagnification','fit');
 
-% 最后选用 Rosenfeld
+%% 最后选用 Rosenfeld
 thin_image = thin_rosenfeld(binary_image);
 figure(14);
 imshow(thin_image, [], 'InitialMagnification','fit');
@@ -152,15 +165,29 @@ ed = edge(binary_image, 'canny', 0.5);
 figure(24);
 imshow(ed, [], 'InitialMagnification','fit');
 
+%%  final choice Laplace detector
+%   乘一个系数效果才好
+laplace_threshold = 2.8;
+binary_image = binary_image * 31;
+outline_image = detector_laplace(binary_image, laplace_threshold);
+figure(18);
+imshow(outline_image, [], 'InitialMagnification','fit');
 
 %%  Label the different objects.
 
 %   region seeds growing
 %   seen as pre-processing
 %   mannually choose seeds, can be designed as integraction
-binary_image = rsg_process(binary_image);
+seed1 = [15, 15];
+seed2 = [47, 25];
+seed3 = [50, 39];
+seed4 = [30, 55];
+% seeds=[21,20;29,49;55,32];
+seeds=[seed1;seed2;seed3;seed4];
+binary_image = rsg_process(binary_image,seeds);
 figure(25);
 imshow(binary_image, [], 'InitialMagnification','fit');
+%%
 
 %   classical connected components algorithm
 label_matrix = label_classical(binary_image);

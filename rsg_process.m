@@ -1,4 +1,4 @@
-function [label_matrix] = rsg_process(binary_image)
+function [label_matrix] = rsg_process(binary_image, seeds)
 %LABEL_RSG 此处显示有关此函数的摘要
 %   区域生长实现的步骤如下:
 % 1. 对图像顺序扫描!找到第1个还没有归属的像素, 设该像素为(x0, y0);
@@ -25,12 +25,12 @@ connects = [-1, -1;
  labelFlag = zeros(height, width);
 
 %   人为设置三个种子点
-seed1 = [15, 15];
-seed2 = [47, 25];
-seed3 = [50, 39];
-seed4 = [30, 55];
+% seed1 = [15, 15];
+% seed2 = [47, 25];
+% seed3 = [50, 39];
+% seed4 = [30, 55];
 
-stk = [seed1; seed2; seed3; seed4];
+stk = seeds;
 
 label_count = 1;
 
