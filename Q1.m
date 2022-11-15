@@ -84,6 +84,19 @@ binary_image(42:end,10:47)=tmp;
 figure(9);
 imshow(binary_image, [], 'InitialMagnification','fit');
 
+%   region seeds growing
+%   seen as pre-processing
+%   mannually choose seeds, can be designed as integraction
+seed1 = [15, 15];
+seed2 = [47, 25];
+seed3 = [50, 39];
+seed4 = [30, 55];
+% seeds=[21,20;29,49;55,32];
+seeds=[seed1;seed2;seed3;seed4];
+binary_image = rsg_process(binary_image,seeds);
+figure(25);
+imshow(binary_image, [], 'InitialMagnification','fit');
+
 %% Determine an one-pixel thin image of the objects
 
 % Helditch
@@ -174,20 +187,6 @@ figure(18);
 imshow(outline_image, [], 'InitialMagnification','fit');
 
 %%  Label the different objects.
-
-%   region seeds growing
-%   seen as pre-processing
-%   mannually choose seeds, can be designed as integraction
-seed1 = [15, 15];
-seed2 = [47, 25];
-seed3 = [50, 39];
-seed4 = [30, 55];
-% seeds=[21,20;29,49;55,32];
-seeds=[seed1;seed2;seed3;seed4];
-binary_image = rsg_process(binary_image,seeds);
-figure(25);
-imshow(binary_image, [], 'InitialMagnification','fit');
-%%
 
 %   classical connected components algorithm
 label_matrix = label_classical(binary_image);

@@ -1,0 +1,40 @@
+\BOOKMARK [1][-]{section.1}{Problem statement}{}% 1
+\BOOKMARK [1][-]{section.2}{Display the original image and preprocessing}{}% 2
+\BOOKMARK [1][-]{section.3}{Binarizing image with thresholding methods}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Mannually threshold setting}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Iterative method}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{OTSU}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.4}{Niblack}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.5}{Bernsen}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.6}{Kittler}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.7}{Comparison and discussion}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.8}{Chosen algorithm}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Image Thinning}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Hilditch thinning algorithm}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{Zhang-Suen thinning algorithm}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.3}{Rosenfeld thinning algorism}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.4}{Look up table Algorithm}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.5}{Comparison and discussion}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.6}{Chosen algorithm}{section.4}% 18
+\BOOKMARK [1][-]{section.5}{Edge detection}{}% 19
+\BOOKMARK [2][-]{subsection.5.1}{Roberts operator}{section.5}% 20
+\BOOKMARK [2][-]{subsection.5.2}{Prewitt operator}{section.5}% 21
+\BOOKMARK [2][-]{subsection.5.3}{Sobel operator}{section.5}% 22
+\BOOKMARK [2][-]{subsection.5.4}{Laplacian operator}{section.5}% 23
+\BOOKMARK [2][-]{subsection.5.5}{Canny operator}{section.5}% 24
+\BOOKMARK [2][-]{subsection.5.6}{Comparison and discussion}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.7}{Chosen algorithm}{section.5}% 26
+\BOOKMARK [1][-]{section.6}{Labling and segmentation}{}% 27
+\BOOKMARK [2][-]{subsection.6.1}{Classical label propagation algorithm}{section.6}% 28
+\BOOKMARK [2][-]{subsection.6.2}{Region growing algorithm}{section.6}% 29
+\BOOKMARK [2][-]{subsection.6.3}{Comparison and discussion}{section.6}% 30
+\BOOKMARK [2][-]{subsection.6.4}{Chosen algorithm}{section.6}% 31
+\BOOKMARK [2][-]{subsection.6.5}{Object seperation}{section.6}% 32
+\BOOKMARK [1][-]{section.7}{Image rotation}{}% 33
+\BOOKMARK [2][-]{subsection.7.1}{Forward mapping}{section.7}% 34
+\BOOKMARK [2][-]{subsection.7.2}{Backward mapping}{section.7}% 35
+\BOOKMARK [3][-]{subsubsection.7.2.1}{Nearest neighbor interpolation}{subsection.7.2}% 36
+\BOOKMARK [3][-]{subsubsection.7.2.2}{Bilinear interpolation}{subsection.7.2}% 37
+\BOOKMARK [1][-]{section.8}{Classifier design using machine learning methods}{}% 38
+\BOOKMARK [1][-]{section.9}{APP design}{}% 39
+\BOOKMARK [1][-]{section.10}{Conclusion}{}% 40
